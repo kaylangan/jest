@@ -19,7 +19,7 @@ jobs:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
   - script: |
-      apt-get install yarn
+      sudo apt-get install yarn
       yarn
     displayName: 'yarn'
   - script: |
