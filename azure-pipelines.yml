@@ -40,6 +40,10 @@ jobs:
     inputs:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '2.7'
+    displayName: 'Install Python'
   - script: |
       yarn
     displayName: 'yarn'
