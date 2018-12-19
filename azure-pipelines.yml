@@ -3,12 +3,13 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+resources:
+  containers:
+  - container: my_container
+    image: ubuntu:16.04
+    
 jobs:
 - job: Linux
-  resources:
-    containers:
-    - container: my_container
-      image: ubuntu:16.04
   pool:
     vmImage: 'Ubuntu 16.04'
   container: my_container
