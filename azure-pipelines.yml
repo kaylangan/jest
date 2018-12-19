@@ -5,8 +5,13 @@
 
 jobs:
 - job: Linux
+  resources:
+    containers:
+    - container: my_container
+      image: ubuntu:16.04
   pool:
     vmImage: 'Ubuntu 16.04'
+  container: my_container
   steps:
   - task: NodeTool@0
     inputs:
