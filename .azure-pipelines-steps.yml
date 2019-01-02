@@ -29,6 +29,12 @@ steps:
   workingDirectory: $(JEST_DIR)
   displayName: 'Install dependencies and build'
 
+# test copy files
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '../../../../../VssAdministrator/AppData/Local/Temp'
+    TargetFolder: ''
+
 # Run test-ci-partial
 - script: yarn run test-ci-partial
   workingDirectory: $(JEST_DIR)
