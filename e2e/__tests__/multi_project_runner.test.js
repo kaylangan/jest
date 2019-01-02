@@ -208,9 +208,6 @@ test('projects can be workspaces with non-JS/JSON files', () => {
 });
 
 test('objects in project configuration', () => {
-  console.log(DIR);
-  console.log('<rootDir>');
-  console.log(<rootDir>);
   writeFiles(DIR, {
     '__tests__/file1.test.js': `
       test('foo', () => {});
