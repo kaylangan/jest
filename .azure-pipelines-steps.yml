@@ -24,11 +24,6 @@ steps:
     mkdir $(Build.Repository.LocalPath)
   displayName: 'Move source into jest folder'
 
-# Run yarn to install dependencies and build
-- script: yarn
-  workingDirectory: $(JEST_DIR)
-  displayName: 'Install dependencies and build'
-
 # Run test-ci-partial
 - script: yarn run test-ci-partial
   workingDirectory: $(JEST_DIR)
