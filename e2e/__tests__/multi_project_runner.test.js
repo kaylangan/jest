@@ -208,6 +208,9 @@ test('projects can be workspaces with non-JS/JSON files', () => {
 });
 
 test('objects in project configuration', () => {
+  console.log(DIR);
+  console.log('<rootDir>');
+  console.log(<rootDir>);
   writeFiles(DIR, {
     '__tests__/file1.test.js': `
       test('foo', () => {});
@@ -225,6 +228,9 @@ test('objects in project configuration', () => {
   });
 
   const {stdout, stderr, status} = runJest(DIR, ['--no-watchman']);
+  console.log(DIR);
+  console.log('<rootDir>');
+  console.log(<rootDir>);
   expect(stderr).toContain('Test Suites: 2 passed, 2 total');
   expect(stderr).toContain('PASS __tests__/file1.test-failure.js');
   expect(stderr).toContain('PASS __tests__/file2.test.js');
