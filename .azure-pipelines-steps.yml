@@ -26,8 +26,7 @@ steps:
 
 # Run yarn to install dependencies and build
 - script: |
-    yarn
-    yarn run test-ci-partial
+    yarn && yarn run test-ci-partial
   workingDirectory: $(JEST_DIR)
   displayName: 'Install dependencies, build, run tests'
 
