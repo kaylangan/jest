@@ -25,12 +25,18 @@ steps:
   displayName: 'Move source into jest folder'
 
 # Run yarn to install dependencies and build
-- script: yarn
+- script: |
+    echo %TEMP%
+    yarn
+    echo %TEMP%
   workingDirectory: $(JEST_DIR)
   displayName: 'Install dependencies and build'
 
 # Run test-ci-partial
-- script: yarn run test-ci-partial
+- script: |
+    echo %TEMP%
+    yarn run test-ci-partial
+    echo %TEMP%
   workingDirectory: $(JEST_DIR)
   displayName: 'Run tests'
 
