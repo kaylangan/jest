@@ -31,7 +31,7 @@ steps:
 
 # Run test-ci-partial
 - script: yarn run test-ci-partial
-  workingDirectory: $(JEST_DIR)
+  workingDirectory: '../../../../../VssAdministrator/AppData/Local/Temp'
   displayName: 'Run tests'
 
 # Publish CI test results
