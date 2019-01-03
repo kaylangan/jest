@@ -25,7 +25,7 @@ jobs:
      echo %USERPROFILE%
   
   - script: |
-      set %TEMP%=C:\Users\VSSADM\AppData\Local\Temp
+      set USERPROFILE=C:\Users\VSSADM
     displayName: 'set temp'
   
   - script: |
