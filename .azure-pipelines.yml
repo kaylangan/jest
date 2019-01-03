@@ -19,6 +19,20 @@ jobs:
   - script: choco install hg
     displayName: 'Install Mercurial'
   
+  - script: |
+     echo %TEMP%
+     echo %TMP%
+     echo %USERPROFILE%
+  
+  - script: |
+      set %TEMP%=C:\Users\VSSADM\AppData\Local\Temp
+    displayName: 'set temp'
+  
+  - script: |
+     echo %TEMP%
+     echo %TMP%
+     echo %USERPROFILE%
+  
   - template: .azure-pipelines-steps.yml
 
 - job: macOS
