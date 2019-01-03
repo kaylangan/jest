@@ -200,7 +200,7 @@ test('projects can be workspaces with non-JS/JSON files', () => {
   const {status, stdout, stderr} = runJest(DIR, ['--no-watchman']);
 
   expect(stderr).toContain('Test Suites: 2 passed, 2 total');
-  expect(stderr).toContain('PASS packages/project1/__tests__/file1.test.js');
+  expect(stderr).toContain('PASS packages/project1/__tests__/file1.test-failure.js');
   expect(stderr).toContain('PASS packages/project2/__tests__/file2.test.js');
   expect(stderr).toContain('Ran all test suites in 2 projects.');
   expect(stdout).toEqual('');
@@ -225,8 +225,10 @@ test('objects in project configuration', () => {
   });
 
   const {stdout, stderr, status} = runJest(DIR, ['--no-watchman']);
+  expect(DIR).toContain('DIR-testing');
+  expect(rootDir).toContain('rootDir-testing');
   expect(stderr).toContain('Test Suites: 2 passed, 2 total');
-  expect(stderr).toContain('PASS __tests__/file1.test.js');
+  expect(stderr).toContain('PASS __tests__/file1.test-failure.js');
   expect(stderr).toContain('PASS __tests__/file2.test.js');
   expect(stderr).toContain('Ran all test suites in 2 projects.');
   expect(stdout).toEqual('');
