@@ -225,8 +225,10 @@ test('objects in project configuration', () => {
   });
 
   const {stdout, stderr, status} = runJest(DIR, ['--no-watchman']);
-  expect(DIR).toContain('DIR-testing');
-  expect(rootDir).toContain('rootDir-testing');
+  const testcwd = process.cwd();
+  const testfile = path.resolve(process.cwd(), 'file.txt');
+  const relpath = path.relative(process.cwd(), testfile);
+  expect(testcwd).toContain(testfile);
   expect(stderr).toContain('Test Suites: 2 passed, 2 total');
   expect(stderr).toContain('PASS __tests__/file1.test-failure.js');
   expect(stderr).toContain('PASS __tests__/file2.test.js');
@@ -249,6 +251,10 @@ test('allows a single project', () => {
   });
 
   const {stdout, stderr, status} = runJest(DIR, ['--no-watchman']);
+  const testcwd = process.cwd();
+  const testfile = path.resolve(process.cwd(), 'file.txt');
+  const relpath = path.relative(process.cwd(), testfile);
+  expect(relpath).toContain('blah');
   expect(stderr).toContain('PASS __tests__/file1.test.js');
   expect(stderr).toContain('Test Suites: 1 passed, 1 total');
   expect(stdout).toEqual('');
