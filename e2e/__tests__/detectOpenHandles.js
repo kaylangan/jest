@@ -53,7 +53,7 @@ it('prints message about flag on forceExit', async () => {
 it('prints out info about open handlers', async () => {
   const {stderr} = await until(
     'detect-open-handles',
-    ['outside', '--detectOpenHandles'],
+    ['outside'],
     'Jest has detected',
   );
   const textAfterTest = getTextAfterTest(stderr);
