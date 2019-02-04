@@ -50,17 +50,6 @@ it('prints message about flag on forceExit', async () => {
   expect(wrap(textAfterTest)).toMatchSnapshot();
 });
 
-it('prints out info about open handlers', async () => {
-  const {stderr} = await until(
-    'detect-open-handles',
-    ['outside', '--detectOpenHandles'],
-    'Jest has detected',
-  );
-  const textAfterTest = getTextAfterTest(stderr);
-
-  expect(wrap(textAfterTest)).toMatchSnapshot();
-});
-
 it('does not report promises', () => {
   // The test here is basically that it exits cleanly without reporting anything (does not need `until`)
   const {stderr} = runJest('detect-open-handles', [
