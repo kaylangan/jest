@@ -31,7 +31,7 @@ function getTextAfterTest(stderr) {
 it('prints message about flag on slow tests', async () => {
   const {stderr} = await until(
     'detect-open-handles',
-    ['outside', '--detectOpenHandles'],
+    ['outside'],
     'Jest did not exit one second after the test run has completed.',
   );
   const textAfterTest = getTextAfterTest(stderr);
@@ -44,17 +44,6 @@ it('prints message about flag on forceExit', async () => {
     'detect-open-handles',
     ['outside', '--forceExit'],
     'Force exiting Jest',
-  );
-  const textAfterTest = getTextAfterTest(stderr);
-
-  expect(wrap(textAfterTest)).toMatchSnapshot();
-});
-
-it('prints out info about open handlers', async () => {
-  const {stderr} = await until(
-    'detect-open-handles',
-    ['outside', '--detectOpenHandles'],
-    'Jest has detected',
   );
   const textAfterTest = getTextAfterTest(stderr);
 
