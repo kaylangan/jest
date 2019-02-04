@@ -28,17 +28,6 @@ function getTextAfterTest(stderr) {
   return (stderr.split(/Ran all test suites(.*)\n/)[2] || '').trim();
 }
 
-it('prints message about flag on slow tests', async () => {
-  const {stderr} = await until(
-    'detect-open-handles',
-    ['outside'],
-    'Jest did not exit one second after the test run has completed.',
-  );
-  const textAfterTest = getTextAfterTest(stderr);
-
-  expect(wrap(textAfterTest)).toMatchSnapshot();
-});
-
 it('prints message about flag on forceExit', async () => {
   const {stderr} = await until(
     'detect-open-handles',
