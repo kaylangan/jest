@@ -1,0 +1,59 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+resources:
+  containers:
+  - container: my_container
+    image: ubuntu:16.04
+    
+jobs:
+- job: Linux
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  container: my_container
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+  - script: |
+      sudo apt-get install yarn
+      yarn
+    displayName: 'yarn'
+  - script: |
+      yarn run test-ci-partial
+    displayName: 'test'
+
+- job: macOS
+  pool:
+    vmImage: 'macOS-10.13'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+  - script: |
+      yarn
+      yarn jest --color
+    displayName: 'install, build, and test'
+
+- job: Windows
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '2.7'
+    displayName: 'Install Python'
+  - script: |
+      yarn
+    displayName: 'yarn'
+  - script: |
+      yarn jest --color
+    displayName: 'test'
